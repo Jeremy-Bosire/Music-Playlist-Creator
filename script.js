@@ -104,7 +104,7 @@ const deletePlaylist = (index) => {
 // Event listeners
 document.getElementById("search-btn").addEventListener("click", () => {
   const query = document.getElementById("search-input").value;
-  if (query) searchSongs(query);
+  if (query) lookUpTracks(query);
 });
 
 document
