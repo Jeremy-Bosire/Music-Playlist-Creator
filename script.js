@@ -7,7 +7,7 @@ let playlists = [];
 let accessToken = "";
 
 // This part fetches the Spotify Access Token
-const fetchAccessToken = async () => {
+const getSpotifyToken = async () => {
   const response = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
     headers: {
@@ -21,7 +21,7 @@ const fetchAccessToken = async () => {
 };
 
 // This is the part that Searches for Songs
-const searchSongs = async (query) => {
+const lookUpTracks = async (query) => {
   const response = await fetch(
     `https://api.spotify.com/v1/search?q=${query}&type=track&limit=10`,
     {
