@@ -108,7 +108,7 @@ document.getElementById("search-btn").addEventListener("click", () => {
 });
 
 document
-  .getElementById("create-playlist-btn")
+  .getElementById("create-playlist-button")
   .addEventListener("click", createPlaylist);
 
 // Initialize App
