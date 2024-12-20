@@ -1,4 +1,4 @@
-// Spotify API credentials
+// Spotify API details
 const CLIENT_ID = "15e39d732ca5498da24ababe1e828254";
 const CLIENT_SECRET = "69c7a9f504ab422fa6a9364c09754265";
 
@@ -6,7 +6,7 @@ const CLIENT_SECRET = "69c7a9f504ab422fa6a9364c09754265";
 let playlists = [];
 let accessToken = "";
 
-// Fetch Spotify Access Token
+// This part fetches the Spotify Access Token
 const fetchAccessToken = async () => {
   const response = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
@@ -20,7 +20,7 @@ const fetchAccessToken = async () => {
   accessToken = data.access_token;
 };
 
-// Search for Songs
+// This is the part that Searches for Songs
 const searchSongs = async (query) => {
   const response = await fetch(
     `https://api.spotify.com/v1/search?q=${query}&type=track&limit=10`,
@@ -34,7 +34,7 @@ const searchSongs = async (query) => {
   displaySearchResults(data.tracks.items);
 };
 
-// Display Search Results
+// This part displays the search results
 const displaySearchResults = (tracks) => {
   const searchResults = document.getElementById("search-results");
   searchResults.innerHTML = "";
@@ -49,7 +49,7 @@ const displaySearchResults = (tracks) => {
   });
 };
 
-// Add Song to Playlist
+// This part adds a song to a playlist
 const addSongToPlaylist = (songName, artistName) => {
   const playlistContainer = document.getElementById("playlist-container");
   const selectedPlaylist = playlists[playlists.length - 1]; // Adding to the last playlist created
@@ -61,7 +61,7 @@ const addSongToPlaylist = (songName, artistName) => {
   renderPlaylists();
 };
 
-// Create a New Playlist
+// This part creates a new playlist
 const createPlaylist = () => {
   const playlistName = document.getElementById("playlist-name").value.trim();
   if (!playlistName) {
@@ -73,7 +73,7 @@ const createPlaylist = () => {
   renderPlaylists();
 };
 
-// Render Playlists
+// This part renders the playlists
 const renderPlaylists = () => {
   const playlistContainer = document.getElementById("playlist-container");
   playlistContainer.innerHTML = "";
@@ -95,13 +95,13 @@ const renderPlaylists = () => {
   });
 };
 
-// Delete a Playlist
+// This is the part that deletes a playlist
 const deletePlaylist = (index) => {
   playlists.splice(index, 1);
   renderPlaylists();
 };
 
-// Event Listeners
+// Event listeners
 document.getElementById("search-btn").addEventListener("click", () => {
   const query = document.getElementById("search-input").value;
   if (query) searchSongs(query);
